@@ -5,6 +5,8 @@ const dotenv=require("dotenv")
 dotenv.config()
 const connect=require("./config/dbconnect")
 connect()
+const authRoutes=require("./routes/authRoutes")
+const userRoutes=require("./routes/userRoutes")
 
 
 //middleware
@@ -13,7 +15,8 @@ app.use(express.json())
 
 
 //routes
-app.use("/api/auth")
+app.use("/api/auth",authRoutes)
+app.use("/api/users",userRoutes)
 
 
 
