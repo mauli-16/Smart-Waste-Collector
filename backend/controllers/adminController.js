@@ -19,4 +19,21 @@ const adminController=async(req,res)=>{
     }
    
 }
-module.exports=adminController
+
+
+const adminGetController=async(req,res)=>{
+    try {
+        const all_bins=await Bin.find()
+        return res.json(all_bins)
+
+        
+    } catch (error) {
+        console.log(error);
+        
+        return res.status(500).json({
+            message:"Failed to fetch records"
+        })
+    }
+   
+}
+module.exports={adminController, adminGetController}
