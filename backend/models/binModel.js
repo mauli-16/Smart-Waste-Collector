@@ -5,12 +5,12 @@ const binSchema=new mongoose.Schema({
         required: true,
         unique: true
     },
-    Latitude:{
+    latitude:{
         type: Number,
         required: true,
         
     },
-    Longitude:{
+    longitude:{
         type: Number,
         required: true,
         
@@ -26,5 +26,5 @@ const binSchema=new mongoose.Schema({
     }
 
 },{timestamps:true})
-const Bin=mongoose.model("Bin",binSchemaSchema)
+const Bin=mongoose.model("Bin",binSchema,"all_bins")
 module.exports=Bin

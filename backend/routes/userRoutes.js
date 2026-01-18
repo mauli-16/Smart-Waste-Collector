@@ -17,8 +17,8 @@ router.get("/driver", verifyToken, authorizeRoles("Driver"),(req,res)=>{
 
 
 //only admin can access
-router.get("/admin", verifyToken, authorizeRoles("Admin"), (req,res)=>{
-    res.json({message:"only admin"})
-})
+// router.get("/admin", verifyToken, authorizeRoles("Admin"), (req,res)=>{
+//     res.json({message:"only admin"})
+// })
 
 module.exports=router
