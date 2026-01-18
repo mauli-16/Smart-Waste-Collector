@@ -1,10 +1,11 @@
 const express=require("express")
 const verifyToken=require("../middleware/authMiddleware")
 const authorizeRoles=require("../middleware/roleMiddleware")
-const {adminController,adminGetController}=require("../controllers/adminController")
+const {adminController,adminGetController,adminUpdateController}=require("../controllers/adminController")
 const router=express.Router()
 
 router.post("/", verifyToken, authorizeRoles("Admin"), adminController)
 router.get("/", verifyToken, authorizeRoles("Admin"), adminGetController)
+router.patch("/:id", verifyToken, authorizeRoles("Admin"), adminUpdateController)
 
 module.exports=router

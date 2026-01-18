@@ -36,4 +36,31 @@ const adminGetController=async(req,res)=>{
     }
    
 }
-module.exports={adminController, adminGetController}
+
+const adminUpdateController=async(req,res)=>{
+    try {
+        const binID=req.params.id
+        const updates=req.body
+        console.log(binID,updates);
+        
+        const updatedBin=await Bin.findByIdAndUpdate(
+            binID,updates,{new:true,runValidators:true}
+        )
+        if(!updatedBin){
+            return res.status(404).json({
+                message:"Bin not found"
+            })
+        }
+        return res.status(200).json(updatedBin)
+
+        
+    } catch (error) {
+        console.log(error);
+        
+        return res.status(500).json({
+            message:"Failed to update bin"
+        })
+    }
+   
+}
+module.exports={adminController, adminGetController, adminUpdateController}
