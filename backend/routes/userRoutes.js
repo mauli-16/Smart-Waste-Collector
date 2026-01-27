@@ -1,12 +1,11 @@
 const express=require("express")
 const verifyToken=require("../middleware/authMiddleware")
 const authorizeRoles=require("../middleware/roleMiddleware")
+const {createReport}=require("../controllers/reportControllers")
 const router=express.Router()
 
 //only citizen can access this route
-router.get("/citizen",verifyToken,authorizeRoles("Citizen"),(req,res)=>{
-    res.json({message:"only citizen"})
-})
+router.post("/citizen/createReport",verifyToken,authorizeRoles("Citizen"),createReport)
 
 
 //only driver can access

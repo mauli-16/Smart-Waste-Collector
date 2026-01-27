@@ -12,12 +12,12 @@ const adminRoutes=require("./routes/adminRoutes")
 
 //middleware
 app.use(express.json())
-
+app.use(express.urlencoded({ extended: true }));
 
 
 //routes
 app.use("/api/auth",authRoutes)
-app.use("/api/",userRoutes)
+app.use("/api",userRoutes)
 app.use("/api/admin",adminRoutes)
 
 
