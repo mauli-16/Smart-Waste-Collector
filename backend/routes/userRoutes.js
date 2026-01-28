@@ -8,10 +8,6 @@ const router=express.Router()
 router.post("/citizen/createReport",verifyToken,authorizeRoles("Citizen"),createReport)
 
 
-//only driver can access
-router.get("/driver", verifyToken, authorizeRoles("Driver"),(req,res)=>{
-    res.json({message:"only driver"})
-})
 
 
 
